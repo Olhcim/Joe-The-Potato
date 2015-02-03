@@ -1,5 +1,6 @@
 package com.olhcim.joe_the_potato.entities;
 
+import com.olhcim.joe_the_potato.math.BoundingBox;
 import com.olhcim.joe_the_potato.sprites.Animation;
 import java.util.HashMap;
 import java.util.Map;
@@ -105,5 +106,10 @@ public class Mob_Player extends EntityLiving {
         anims.put("idle", new Animation("Pototo_Walk_Jump", 1).start());
         
         return anims;
+    }
+
+    @Override
+    protected BoundingBox createBoundingBox() {
+        return new BoundingBox(getCurrentAnimation().getWidth(), getCurrentAnimation().getHeight());
     }
 }

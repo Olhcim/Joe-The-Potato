@@ -1,6 +1,7 @@
 package com.olhcim.joe_the_potato.sprites;
 
 import com.olhcim.joe_the_potato.Main;
+import com.olhcim.joe_the_potato.math.BoundingBox;
 import java.awt.Graphics;
 import java.io.File;
 import java.util.ArrayList;
@@ -115,5 +116,11 @@ public class Animation implements GraphicsComponent {
     @Override
     public void drawFromCenter(Graphics g, int x, int y) {
         getSprite().drawFromCenter(g, x, y);
+    }
+    
+    @Override
+    public BoundingBox getBoundingBox()
+    {
+        return getSprite().getBoundingBox();
     }
 }

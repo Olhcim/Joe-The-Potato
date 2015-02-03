@@ -1,6 +1,7 @@
 package com.olhcim.joe_the_potato.entities;
 
 
+import com.olhcim.joe_the_potato.math.BoundingBox;
 import com.olhcim.joe_the_potato.sprites.Animation;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -12,7 +13,7 @@ public abstract class Entity {
     protected String currentAnimation = "idle";
 
     public double posx, posy, velx, vely;
-
+    
     public Entity(double x, double y) {
         posx = x;
         posy = y;
@@ -43,10 +44,21 @@ public abstract class Entity {
             g.setColor(Color.MAGENTA);
             g.fillRect((int) posx - 5, (int) posy - 5, 10, 10);
         }
+        
+        try {
+        getTranslatedBoundingBox().draw(g);
+        } catch (Exception e) {};
     }
     
     protected Animation getCurrentAnimation()
     {
         return animations.get(currentAnimation);
     }
+    
+    public BoundingBox getTranslatedBoundingBox()
+    {
+        return BoundingBox.newTranslatedCenter(getCurrentAnimation().getBoundingBox(), posx, posy);
+    }
+    
+    protected abstract BoundingBox createBoundingBox();
 }

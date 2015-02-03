@@ -6,6 +6,7 @@
 package com.olhcim.joe_the_potato.sprites;
 
 import com.olhcim.joe_the_potato.Main;
+import com.olhcim.joe_the_potato.math.BoundingBox;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,11 +15,13 @@ import javax.imageio.ImageIO;
 
 public class Sprite implements GraphicsComponent {
 
-    BufferedImage image;
+    private BufferedImage image;
+    private BoundingBox boundingBox;
     
     public Sprite(BufferedImage image)
     {
         this.image = image;
+        boundingBox = new BoundingBox(image.getWidth(), image.getHeight());
     }
     
     public Sprite(String string)
@@ -53,6 +56,12 @@ public class Sprite implements GraphicsComponent {
     @Override
     public int getHeight() {
         return image.getHeight();
+    }
+    
+    @Override
+    public BoundingBox getBoundingBox()
+    {
+        return boundingBox;
     }
 
     @Override
