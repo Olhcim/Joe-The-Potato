@@ -107,9 +107,4 @@ public class Mob_Player extends EntityLiving {
         
         return anims;
     }
-
-    @Override
-    protected BoundingBox createBoundingBox() {
-        return new BoundingBox(getCurrentAnimation().getWidth(), getCurrentAnimation().getHeight());
-    }
 }

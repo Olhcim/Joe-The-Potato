@@ -59,6 +59,4 @@ public abstract class Entity {
     {
         return BoundingBox.newTranslatedCenter(getCurrentAnimation().getBoundingBox(), posx, posy);
     }
-    
-    protected abstract BoundingBox createBoundingBox();
 }

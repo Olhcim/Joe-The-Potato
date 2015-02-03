@@ -31,8 +31,6 @@ public class Sprite implements GraphicsComponent {
     
     public Sprite(File file)
     {
-        
-        
         if(!file.isFile() || !file.getName().endsWith(".png"))
         {
             System.err.println("Invalid sprite png file: " + file);
@@ -46,6 +44,8 @@ public class Sprite implements GraphicsComponent {
             System.err.println("The sprite file could not be loaded: " + file);
             throw new RuntimeException("The sprite file could not be loaded: " + file);
         }
+        
+        boundingBox = new BoundingBox(image.getWidth(), image.getHeight());
     }
     
     @Override

@@ -55,4 +55,9 @@ public class BoundingBox {
     {
         return Math.abs(y0 - y1);
     }
+    
+    public String toString()
+    {
+        return "x0: " + x0 + "   y0: " + y0 + "   x1: " + x1 + "   y1: " + y1;
+    }
 }
