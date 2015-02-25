@@ -1,6 +1,7 @@
 
 package com.olhcim.joe_the_potato;
 
+import com.olhcim.joe_the_potato.sprites.ResourceLoader;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

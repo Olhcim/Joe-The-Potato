@@ -1,0 +1,35 @@
+apply plugin: 'java'
+//apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'com.olhcim.joe_the_potato.Main'
+
+// tag::repositories[]
+repositories { 
+	mavenCentral()
+//	flatDir {
+//       dirs 'libs'
+//   }
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    baseName = 'JotatoThePotato'
+    version =  'master_v0.1.0'
+}
+// end::jar[]
+
+// tag::dependencies[]
+dependencies {
+    compile "net.onedaybeard.artemis:artemis-odb:0.9.0"
+	//compile files('libs/artemis-a609b2076aacc0ef5ecf0b390205d01bb88ceae2.jar')
+	//compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+// end::dependencies[]
+
+// tag::wrapper[]
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+// end::wrapper[]

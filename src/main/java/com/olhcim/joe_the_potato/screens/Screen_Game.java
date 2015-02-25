@@ -4,6 +4,7 @@ package com.olhcim.joe_the_potato.screens;
 import com.olhcim.joe_the_potato.entities.EntityLiving;
 import com.olhcim.joe_the_potato.entities.Mob_Player;
 import com.olhcim.joe_the_potato.entities.Particle;
+import com.olhcim.joe_the_potato.sprites.ResourceLoader;
 import com.olhcim.joe_the_potato.sprites.Sprite;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -17,7 +18,7 @@ public class Screen_Game extends Screen {
     public Screen_Game()
     {
         if (background == null)
-            background = new Sprite("background.png");
+            background = ResourceLoader.getSprite("background");
         
         player = new Mob_Player(100,100);
         livingEntities = new ArrayList<>();

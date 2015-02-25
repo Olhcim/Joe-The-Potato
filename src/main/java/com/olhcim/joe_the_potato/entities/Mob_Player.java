@@ -1,7 +1,7 @@
 package com.olhcim.joe_the_potato.entities;
 
-import com.olhcim.joe_the_potato.math.BoundingBox;
 import com.olhcim.joe_the_potato.sprites.Animation;
+import com.olhcim.joe_the_potato.sprites.ResourceLoader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -103,7 +103,7 @@ public class Mob_Player extends EntityLiving {
     protected Map<String, Animation> loadAnimations() {
         Map<String, Animation> anims = new HashMap<>();
         
-        anims.put("idle", new Animation("Pototo_Walk_Jump", 1).start());
+        anims.put("idle", ResourceLoader.getAnimation("Potato_Walk").start());
         
         return anims;
     }
