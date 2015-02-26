@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.olhcim.potato.components.Player;
@@ -29,30 +30,24 @@ public class PlayerInput extends IteratingSystem implements InputProcessor {
         super(Family.getFor(Player.class, Renderable.class, Velocity.class));
         //this.camera = camera;
 
-        //Gdx.input.setInputProcessor(this);
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
     protected void processEntity(Entity e, float delta) {
         Renderable renderable = rm.get(e);
         Velocity vel = vm.get(e);
-        
-        System.out.println("YEP");
 
         if (up) {
-            System.out.println("up");
             vel.velX -= vel.velX * delta * (1 - vel.velX / maxVel);
         }
         if (down) {
-            System.out.println("down");
             vel.velX += vel.velX * delta * (1 - vel.velX / maxVel);
         }
         if (left) {
-            System.out.println("left");
             vel.velX -= vel.velX * delta * (1 - vel.velX / maxVel);
         }
         if (right) {
-            System.out.println("right");
             vel.velX += vel.velX * delta * (1 - vel.velX / maxVel);
         }
 

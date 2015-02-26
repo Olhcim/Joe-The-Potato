@@ -19,8 +19,9 @@ public class EntityFactory {
             //change to get from current room
             e.add( new Bounds(0,0,1000,1000));
             e.add( new Collide(20) );
+            e.add( new Velocity(0,0) );
             //change to get start from current room;
-            e.add( new Renderable( FileUtil.loadCenteredSprite("badlogic", "jpg"), 500,500, Layer.PLAYER ) );
+            e.add( new Renderable( FileUtil.loadCenteredSprite("badlogic", "jpg"), 0,0, Layer.PLAYER ) );
         return e;
     }
     

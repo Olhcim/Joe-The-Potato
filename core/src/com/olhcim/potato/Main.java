@@ -5,10 +5,13 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.olhcim.potato.components.Renderable;
 import com.olhcim.potato.systems.PlayerInput;
 import com.olhcim.potato.util.EntityFactory;
+import com.olhcim.potato.util.FileUtil;
 
 public class Main extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -20,9 +23,8 @@ public class Main extends ApplicationAdapter {
             
             engine = new Engine();
             
-            player = EntityFactory.createPlayer(100, 100);
+            player = EntityFactory.createPlayer(0, 0);
             engine.addEntity(player);
-            
             engine.addSystem( new PlayerInput() );
 
             batch = new SpriteBatch();
@@ -40,7 +42,7 @@ public class Main extends ApplicationAdapter {
             
             engine.update( (float) (passedTime / 1000000000.0f) );
             
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
                 
 		batch.begin();

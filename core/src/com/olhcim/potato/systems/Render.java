@@ -5,7 +5,27 @@
  */
 package com.olhcim.potato.systems;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.olhcim.potato.components.Renderable;
 
-public class Render {
+
+public class Render extends IteratingSystem {
+
+    public Render() {
+        super(Family.getFor(Renderable.class));
+    }
+
+    @Override
+    protected void processEntity(Entity entity, float deltaTime) {
+//        SpriteBatch batch = new SpriteBatch();
+//                
+//        batch.begin();
+//        entity.getComponent(Renderable.class).sprite.draw(batch);
+//        batch.end();
+    }
     
 }
