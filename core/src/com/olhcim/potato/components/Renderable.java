@@ -25,9 +25,14 @@ public class Renderable extends Component {
 	
 	public Sprite sprite;
         public Layer layer;
+        public float x,y,prex,prey;
         
     public Renderable(Sprite sprite, float x, float y, Layer layer)
     {
+        this.x = x;
+        this.y = y;
+        this.prex = x;
+        this.prey = y;
         sprite.setPosition(x, y);
         this.sprite = sprite;
         this.layer = layer;

@@ -17,6 +17,7 @@ public class PlayerInput extends IteratingSystem implements InputProcessor {
     private static final float fireRate = 0.1f;
 
     private boolean up, down, left, right;
+    private boolean u,d,l,r;
     private boolean shoot;
     private float timeToFire;
 
@@ -35,20 +36,24 @@ public class PlayerInput extends IteratingSystem implements InputProcessor {
 
     @Override
     protected void processEntity(Entity e, float delta) {
-        Renderable renderable = rm.get(e);
+        
+        checkForKeyPress();
+        
         Velocity vel = vm.get(e);
+        
+        float svel = 100f;
 
         if (up) {
-            vel.velX -= vel.velX * delta * (1 - vel.velX / maxVel);
+            vel.velY = -svel/(1-vel.friction*delta);//vel.velX * delta * (1 - vel.velX / maxVel);
         }
         if (down) {
-            vel.velX += vel.velX * delta * (1 - vel.velX / maxVel);
+            vel.velY = svel/(1-vel.friction*delta);//vel.velX * delta * (1 - vel.velX / maxVel);
         }
         if (left) {
-            vel.velX -= vel.velX * delta * (1 - vel.velX / maxVel);
+            vel.velX = -svel/(1-vel.friction*delta);//vel.velX * delta * (1 - vel.velX / maxVel);
         }
         if (right) {
-            vel.velX += vel.velX * delta * (1 - vel.velX / maxVel);
+            vel.velX = svel/(1-vel.friction*delta);//vel.velX * delta * (1 - vel.velX / maxVel);
         }
 
         if (timeToFire < fireRate) {
@@ -63,16 +68,42 @@ public class PlayerInput extends IteratingSystem implements InputProcessor {
 
     }
 
+    public void checkForKeyPress()
+    {
+//        boolean l = Gdx.input.isKeyPressed(Input.Keys.A);
+//        boolean r = Gdx.input.isKeyPressed(Input.Keys.D);
+//        boolean u = Gdx.input.isKeyPressed(Input.Keys.W);
+//        boolean d = Gdx.input.isKeyPressed(Input.Keys.S);
+        
+        if(l && !r && !u && !d)
+        {
+            left = true;
+            right = up = down = false;
+        } else if(!l && r && !u && !d) {
+            right = true;
+            left = up = down = false;
+        } else if(!l && !r && u && !d) {
+            up = true;
+            left = right = down = false;
+        } else if(!l && !r && !u && d) {
+            down = true;
+            left = right = up = false;
+        } else {
+            left = right = up = down = false;
+        }
+    }
+    
+    
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.A) {
-            left = true;
+            l = true;
         } else if (keycode == Input.Keys.D) {
-            right = true;
+            r = true;
         } else if (keycode == Input.Keys.W) {
-            up = true;
+            u = true;
         } else if (keycode == Input.Keys.S) {
-            down = true;
+            d = true;
         } else if (keycode == Input.Keys.SPACE) {
             shoot = true;
         }
@@ -83,13 +114,13 @@ public class PlayerInput extends IteratingSystem implements InputProcessor {
     @Override
     public boolean keyUp(int keycode) {
         if (keycode == Input.Keys.A) {
-            left = false;
+            l = false;
         } else if (keycode == Input.Keys.D) {
-            right = false;
+            r = false;
         } else if (keycode == Input.Keys.W) {
-            up = false;
+            u = false;
         } else if (keycode == Input.Keys.S) {
-            down = false;
+            d = false;
         } else if (keycode == Input.Keys.SPACE) {
             shoot = false;
         }

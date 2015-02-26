@@ -30,7 +30,12 @@ public class Movement extends IteratingSystem {
         Renderable r = rm.get(entity);
         Velocity v = vm.get(entity);
         
-        r.sprite.translateX( v.velX * deltaTime );
-        r.sprite.translateY( v.velY * deltaTime );
+        r.prex = r.x;
+        r.prey = r.y;
+        r.x += v.velX * deltaTime;
+        r.y += v.velY * deltaTime;
+        
+        v.velX -= v.velX*v.friction*deltaTime;
+        v.velY -= v.velY*v.friction*deltaTime;
     }
 }
