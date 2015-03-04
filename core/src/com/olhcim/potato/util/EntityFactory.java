@@ -20,8 +20,23 @@ public class EntityFactory {
             e.add( new Bounds(0,0,1000,1000));
             e.add( new Collide(20) );
             e.add( new Velocity(0,0) );
+            e.add( new Position(x,y) );
             //change to get start from current room;
-            e.add( new Renderable( FileUtil.loadCenteredSprite("badlogic", "jpg"), 0,0, Layer.PLAYER ) );
+            e.add( new Renderable( "potato", Layer.PLAYER ) );
+        return e;
+    }
+    
+    public static Entity createBullet(float x, float y, float vx, float vy, float dist)
+    {
+        Entity e = new Entity();
+            //change to get from current room
+            e.add( new Bounds(0,0,1000,1000));
+            e.add( new Collide(8) );
+            e.add( new Velocity(vx,vy,0) );
+            e.add( new Position(x,y) );
+            e.add( new DistExpire(x,y,dist) );
+            //change to get start from current room;
+            e.add( new Renderable( "shot", Layer.ENEMIES ) );
         return e;
     }
     

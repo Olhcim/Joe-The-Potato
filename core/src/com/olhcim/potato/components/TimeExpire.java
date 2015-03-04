@@ -7,11 +7,13 @@ import com.badlogic.ashley.core.Component;
  *
  * @author Nathan
  */
-public class Expire extends Component {
-    public float delay;
+public class TimeExpire extends Component {
     
-    public Expire(float delay)
+    public float delay, progress;
+    
+    public TimeExpire(float delay)
     {
         this.delay = delay;
+        this.progress = 0;
     }
 }

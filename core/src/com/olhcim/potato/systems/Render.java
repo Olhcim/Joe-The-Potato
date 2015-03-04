@@ -8,15 +8,14 @@ package com.olhcim.potato.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.olhcim.potato.components.Position;
 import com.olhcim.potato.components.Renderable;
 
 
 public class Render extends IteratingSystem {
 
     public Render() {
-        super(Family.getFor(Renderable.class));
+        super(Family.getFor(Renderable.class, Position.class));
     }
 
     @Override

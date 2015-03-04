@@ -6,6 +6,8 @@ public class Main extends ScreenBasedGame {
 
         long oldTime = System.nanoTime();
         long passedTime = 0;
+        
+        public static final ScreenGame screenGame = new ScreenGame();
 
 
     @Override
@@ -16,6 +18,6 @@ public class Main extends ScreenBasedGame {
     @Override
     public void initialise() {
         System.out.println("initialised");
-        this.addScreen(new ScreenGame());
+        this.addScreen(screenGame);
     }
 }
